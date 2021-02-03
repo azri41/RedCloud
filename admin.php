@@ -332,17 +332,12 @@
                           class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
                         >
                           <div class="flex items-center">
-                            <span class="mr-2">60%</span>
-                            <div class="relative w-full">
-                              <div
-                                class="overflow-hidden h-2 text-xs flex rounded bg-red-200"
-                              >
-                                <div
-                                  style="width: 60%;"
-                                  class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
-                                ></div>
-                              </div>
-                            </div>
+                          <span
+                          class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
+                        >
+                        On Going
+                        </span>
+
                           </div>
                         </td>
                       </tr>
@@ -361,17 +356,12 @@
                           class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
                         >
                           <div class="flex items-center">
-                            <span class="mr-2">70%</span>
-                            <div class="relative w-full">
-                              <div
-                                class="overflow-hidden h-2 text-xs flex rounded bg-green-200"
-                              >
-                                <div
-                                  style="width: 70%;"
-                                  class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"
-                                ></div>
-                              </div>
-                            </div>
+                          <span
+                          class="px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full dark:text-white dark:bg-orange-600"
+                        >
+                          Up Coming
+                        </span>
+                            
                           </div>
                         </td>
                       </tr>
@@ -390,17 +380,13 @@
                           class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
                         >
                           <div class="flex items-center">
-                            <span class="mr-2">80%</span>
+                          <span
+                          class="px-2 py-1 font-semibold leading-tight text-gray-700 bg-gray-100 rounded-full dark:text-gray-100 dark:bg-gray-700"
+                        >
+                          Finished
+                        </span>
                             <div class="relative w-full">
-                              <div
-                                class="overflow-hidden h-2 text-xs flex rounded bg-purple-200"
-                              >
-                                <div
-                                  style="width: 80%;"
-                                  class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-500"
-                                ></div>
-                              </div>
-                            </div>
+                              
                           </div>
                         </td>
                       </tr>
@@ -419,17 +405,12 @@
                           class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
                         >
                           <div class="flex items-center">
-                            <span class="mr-2">75%</span>
-                            <div class="relative w-full">
-                              <div
-                                class="overflow-hidden h-2 text-xs flex rounded bg-blue-200"
-                              >
-                                <div
-                                  style="width: 75%;"
-                                  class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"
-                                ></div>
-                              </div>
-                            </div>
+                          <span
+                          class="px-2 py-1 font-semibold leading-tight text-gray-700 bg-gray-100 rounded-full dark:text-gray-100 dark:bg-gray-700"
+                        >
+                          Finished
+                        </span>
+                            
                           </div>
                         </td>
                       </tr>
@@ -448,17 +429,12 @@
                           class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
                         >
                           <div class="flex items-center">
-                            <span class="mr-2">30%</span>
-                            <div class="relative w-full">
-                              <div
-                                class="overflow-hidden h-2 text-xs flex rounded bg-orange-200"
-                              >
-                                <div
-                                  style="width: 30%;"
-                                  class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"
-                                ></div>
-                              </div>
-                            </div>
+                          <span
+                          class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
+                        >
+                        On Going
+                        </span>
+                            
                           </div>
                         </td>
                       </tr>
