@@ -141,13 +141,18 @@
               </form>
               <!-- Divider -->
               <hr class="my-4 md:min-w-full" />
-
+              <!-- Heading -->
+              <h6
+                class="md:min-w-full text-gray-600 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
+              >
+                Admin Layout Pages
+              </h6>
               <!-- Navigation -->
   
               <ul class="md:flex-col md:min-w-full flex flex-col list-none">
                 <li class="items-center">
                   <a
-                    href="admin.html"
+                    href="./dashboard.html"
                     class="text-xs uppercase py-3 font-bold block text-pink-500 hover:text-pink-600"
                   >
                     <i class="fas fa-tv mr-2 text-sm opacity-75"></i>
@@ -157,21 +162,21 @@
   
                 <li class="items-center">
                   <a
-                    href=""
+                    href="./settings.html"
                     class="text-xs uppercase py-3 font-bold block text-gray-800 hover:text-gray-600"
                   >
                     <i class="fas fa-tools mr-2 text-sm text-gray-400"></i>
-                    Events
+                    Settings
                   </a>
                 </li>
   
                 <li class="items-center">
                   <a
-                    href=""
+                    href="./tables.html"
                     class="text-xs uppercase py-3 font-bold block text-gray-800 hover:text-gray-600"
                   >
                     <i class="fas fa-table mr-2 text-sm text-gray-400"></i>
-                    Participants
+                    Tables
                   </a>
                 </li>
   
