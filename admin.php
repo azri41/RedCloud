@@ -307,7 +307,13 @@
                         <th
                           class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left"
                         >
-                          Date
+                          Date Start
+                        </th>
+                        
+                        <th
+                          class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left"
+                        >
+                          Date End
                         </th>
                         <th
                           class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left min-w-140-px"
@@ -317,127 +323,68 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+                    <?php
+                        $queryEvents = "SELECT eventName, DATE(eventStart) as dateStart, DATE(eventEnd) as dateEnd, eventType, status FROM event";
+                        $resultEvents = mysqli_query($conn, $queryEvents);
+                        while($rowEvents = mysqli_fetch_array($resultEvents)) {
+                        echo '
+                        <tr>
                         <th
                           class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"
                         >
-                          Facebook
+                          '.$rowEvents['eventName'].'
                         </th>
                         <td
                           class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
                         >
-                          1,480
+                          '.$rowEvents['dateStart'].'
                         </td>
                         <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          <div class="flex items-center">
-                          <span
-                          class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
-                        >
-                        On Going
-                        </span>
-
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"
-                        >
-                          Facebook
-                        </th>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          5,480
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          <div class="flex items-center">
-                          <span
-                          class="px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full dark:text-white dark:bg-orange-600"
-                        >
-                          Up Coming
-                        </span>
-                            
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"
-                        >
-                          Google
-                        </th>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          4,807
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          <div class="flex items-center">
-                          <span
-                          class="px-2 py-1 font-semibold leading-tight text-gray-700 bg-gray-100 rounded-full dark:text-gray-100 dark:bg-gray-700"
-                        >
-                          Finished
-                        </span>
-                            <div class="relative w-full">
-                              
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"
-                        >
-                          Instagram
-                        </th>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          3,678
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          <div class="flex items-center">
-                          <span
-                          class="px-2 py-1 font-semibold leading-tight text-gray-700 bg-gray-100 rounded-full dark:text-gray-100 dark:bg-gray-700"
-                        >
-                          Finished
-                        </span>
-                            
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"
-                        >
-                          twitter
-                        </th>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          2,645
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          <div class="flex items-center">
-                          <span
-                          class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
-                        >
-                        On Going
-                        </span>
-                            
-                          </div>
-                        </td>
-                      </tr>
+                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
+                      >
+                        '.$rowEvents['dateEnd'].'
+                      </td>
+                      <td
+                      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
+                    >
+                      <div class="flex items-center">';
+                      if ($rowEvents['status']=='Ongoing') {
+                        echo '<span
+                        class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
+                      >
+                      '.$rowEvents['status'].'
+                      </span>
+  
+                        </div>
+                      </td>
+                        </tr>
+                          ';
+                      }
+                      else if($rowEvents['status']=='Upcoming') {
+                        echo '<span
+                        class="px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full dark:bg-orange-700 dark:text-orange-100"
+                      >
+                      '.$rowEvents['status'].'
+                      </span>
+  
+                        </div>
+                      </td>
+                        </tr>
+                          ';
+                      }
+                      else if($rowEvents['status']=='Finished') {
+                        echo '<span
+                        class="px-2 py-1 font-semibold leading-tight text-gray-700 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-100"
+                      >
+                      '.$rowEvents['status'].'
+                      </span>
+  
+                        </div>
+                      </td>
+                        </tr>
+                          ';
+                      }}
+                      ?>
                     </tbody>
                   </table>
                 </div>
