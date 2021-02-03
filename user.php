@@ -90,7 +90,7 @@
                         Overview
                       </h6>
                       <h2 class="text-white text-xl font-semibold">
-                        Progress
+                        Progress (%)
                       </h2>
                     </div>
                   </div>
@@ -152,65 +152,50 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <?php
-                        $userType = 'Participant';
-                        $query = "SELECT * from user WHERE userType=?";
-                        $stmt = mysqli_stmt_init($conn);
-                        mysqli_stmt_prepare($stmt, $query);
-                        mysqli_stmt_bind_param($stmt, "s", $userType);
-                        mysqli_stmt_execute($stmt);
-                        $result = mysqli_stmt_get_result($stmt);
-
-                        while($row = mysqli_fetch_array($result)) {
-                          $enrolment = 'Enrolled';
-                          $status = 'Attended';
-                          $queryEventAttended = "SELECT count(email) AS events_attended FROM eventuser WHERE email=? AND enrolment=? AND status=?";
-                          $stmtEventAttended = mysqli_stmt_init($conn);
-                          mysqli_stmt_prepare($stmtEventAttended, $queryEventAttended);
-                          mysqli_stmt_bind_param($stmtEventAttended, "sss", $row['email'], $enrolment, $status);
-                          mysqli_stmt_execute($stmtEventAttended);
-                          $resultEventAttended = mysqli_stmt_get_result($stmtEventAttended);
-                          $rowEventAttended = mysqli_fetch_array($resultEventAttended);
-                          
-                          $statusUnattended = 'Unattended';
-                          $queryEventUnattended = "SELECT count(email) as events_unattended FROM eventuser WHERE email=? AND status=?";
-                          $stmtEventUnattended = mysqli_stmt_init($conn);
-                          mysqli_stmt_prepare($stmtEventUnattended, $queryEventUnattended);
-                          mysqli_stmt_bind_param($stmtEventUnattended, "ss", $row['email'], $statusUnattended);
-                          mysqli_stmt_execute($stmtEventUnattended);
-                          $resultEventUnattended = mysqli_stmt_get_result($stmtEventUnattended);
-                          $rowEventUnattended = mysqli_fetch_array($resultEventUnattended);
-                          
-                          $queryUserProgress = "SELECT totalProgress FROM user WHERE email=?";
-                          $stmtUserProgress = mysqli_stmt_init($conn);
-                          mysqli_stmt_prepare($stmtUserProgress, $queryUserProgress);
-                          mysqli_stmt_bind_param($stmtUserProgress, "s", $row['email']);
-                          mysqli_stmt_execute($stmtUserProgress);
-                          $resultUserProgress = mysqli_stmt_get_result($stmtUserProgress);
-                          $rowUserProgress = mysqli_fetch_array($resultUserProgress);
-
-                          echo '
                           <tr>
                           <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
-                            '.$row['name'].'
+                            Volunteer Event
                           </th>
                           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                            '.$rowEventAttended['events_attended'].'
+                            4/3/2021
                           </td>
                           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                            '.$rowEventUnattended['events_unattended'].'
+                            4/3/2021
                           </td>
                           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                            <i class="fas fa-star text-yellow-400 mr-4"></i>
-                            '.$rowUserProgress['totalProgress'].'%
+                          <span
+                        class="px-2 py-1 font-semibold leading-tight text-gray-700 bg-orange-100 rounded-full dark:bg-gray-700 dark:text-gray-100"
+                      >
+                      Upcoming
+                      </span>
                           </td>
                           <td class="px-4 py-3 text-sm text-green-500 font-semibold">
                           <a href="" class="btn">Enroll</a>
                         </td>
                         </tr>
-                          ';
-                        }
-                      ?>
+
+                        <tr>
+                          <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
+                            Social Event
+                          </th>
+                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                            10/4/2021
+                          </td>
+                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                            10/4/2021
+                          </td>
+                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                          <span
+                        class="px-2 py-1 font-semibold leading-tight text-gray-700 bg-orange-100 rounded-full dark:bg-gray-700 dark:text-gray-100"
+                      >
+                      Upcoming
+                      </span>
+                          </td>
+                          <td class="px-4 py-3 text-sm text-green-500 font-semibold">
+                          <a href="" class="btn">Enroll</a>
+                        </td>
+                        </tr>
+
                     </tbody>
                   </table>
                 </div>
@@ -368,34 +353,6 @@
     ></script>
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
     <script type="text/javascript">
-      /* Make dynamic date appear */
-      (function () {
-        if (document.getElementById("get-current-year")) {
-          document.getElementById(
-            "get-current-year"
-          ).innerHTML = new Date().getFullYear();
-        }
-      })();
-      /* Sidebar - Side navigation menu on mobile/responsive mode */
-      function toggleNavbar(collapseID) {
-        document.getElementById(collapseID).classList.toggle("hidden");
-        document.getElementById(collapseID).classList.toggle("bg-white");
-        document.getElementById(collapseID).classList.toggle("m-2");
-        document.getElementById(collapseID).classList.toggle("py-3");
-        document.getElementById(collapseID).classList.toggle("px-6");
-      }
-      /* Function for dropdowns */
-      function openDropdown(event, dropdownID) {
-        let element = event.target;
-        while (element.nodeName !== "A") {
-          element = element.parentNode;
-        }
-        Popper.createPopper(element, document.getElementById(dropdownID), {
-          placement: "bottom-start",
-        });
-        document.getElementById(dropdownID).classList.toggle("hidden");
-        document.getElementById(dropdownID).classList.toggle("block");
-      }
 
       (function () {
         /* Chart initialisations */
@@ -419,29 +376,22 @@
             ],
             datasets: [
               {
-                label: "Social Event",
+                label: "2020",
                 backgroundColor: "#ed64a6",
                 borderColor: "#ed64a6",
-                data: [230, 378, 516, 234, 100, 245, 153, 243, 170, 212, 380, 440],
+                data: [5, 20, 33, 41, 57, 64, 67, 70, 80, 86, 94, 100],
                 fill: false,
                 barThickness: 8,
               },
               {
-                label: "Training",
+                label: "2021",
                 fill: false,
                 backgroundColor: "#4c51bf",
                 borderColor: "#4c51bf",
-                data: [320, 230, 206, 174, 310, 444, 187, 113, 140, 152, 260, 310],
+                data: [10, 15],
                 barThickness: 8,
               },
-              {
-                label: "Volunteering",
-                fill: false,
-                backgroundColor: "#10B981",
-                borderColor: "#10B981",
-                data: [241, 348, 196, 114, 120, 224, 187, 153, 120, 212, 311, 325],
-                barThickness: 8,
-              },
+
             ],
           },
           options: {
@@ -449,7 +399,7 @@
             responsive: true,
             title: {
               display: false,
-              text: "Sales Charts",
+              text: "Progress",
               fontColor: "white",
             },
             legend: {
