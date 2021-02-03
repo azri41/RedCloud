@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/styles.css"/>
 
     <title>IT Development Program</title>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
   </head>
   <body>
     <div class="">
@@ -30,40 +31,7 @@
             >
               IT Development Program
             </a>
-            <ul class="md:hidden items-center flex flex-wrap list-none">
-              <li class="inline-block relative">
-                <a
-                  class="text-gray-600 block py-1 px-3"
-                  href=""
-                  onclick="openDropdown(event,'notification-dropdown')"
-                  ><i class="fas fa-bell"></i
-                ></a>
-                <div
-                  class="hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
-                  id="notification-dropdown"
-                >
-                  <a
-                    href=""
-                    class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800"
-                    >Action</a
-                  ><a
-                    href=""
-                    class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800"
-                    >Another action</a
-                  ><a
-                    href=""
-                    class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800"
-                    >Something else here</a
-                  >
-                  <div class="h-0 my-2 border border-solid border-gray-200"></div>
-                  <a
-                    href=""
-                    class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800"
-                    >Seprated link</a
-                  >
-                </div>
-              </li>
-            </ul>
+
             <div
               class="md:flex md:flex-col md:items-stretch md:opacity-100 md:relative md:mt-4 md:shadow-none shadow absolute top-0 left-0 right-0 z-40 overflow-y-auto overflow-x-hidden h-auto items-center flex-1 rounded hidden"
               id="example-collapse-sidebar"
@@ -77,8 +45,8 @@
               <ul class="md:flex-col md:min-w-full flex flex-col list-none">
                 <li class="items-center">
                   <a
-                    href="admin.html"
-                    class="text-xs uppercase py-3 font-bold block text-pink-500 hover:text-pink-600"
+                    href="admin.php"
+                    class="text-xs uppercase py-3 font-bold block hover:text-blue-600"
                   >
                     <i class="fas fa-tv mr-2 text-sm opacity-75"></i>
                     Dashboard
@@ -88,9 +56,9 @@
                 <li class="items-center">
                   <a
                     href="admin_event.php"
-                    class="text-xs uppercase py-3 font-bold block text-gray-800 hover:text-gray-600"
+                    class="text-xs uppercase py-3 font-bold block hover:text-blue-600"
                   >
-                    <i class="fas fa-tools mr-2 text-sm text-gray-400"></i>
+                    <i class="fas fa-tools mr-2 text-sm opacity-75"></i>
                     Events
                   </a>
                 </li>
@@ -98,9 +66,9 @@
                 <li class="items-center">
                   <a
                     href="admin_participants.php"
-                    class="text-xs uppercase py-3 font-bold block text-gray-800 hover:text-gray-600"
+                    class="text-xs uppercase py-3 font-bold block hover:text-blue-600"
                   >
-                    <i class="fas fa-table mr-2 text-sm text-gray-400"></i>
+                    <i class="fas fa-table mr-2 text-sm opacity-75"></i>
                     Participants
                   </a>
                 </li>
@@ -115,20 +83,20 @@
               >
                 <li class="items-center">
                   <a
-                    href="../auth/login.html"
-                    class="text-gray-800 hover:text-gray-600 text-xs uppercase py-3 font-bold block"
+                    href=""
+                    class="text-xs uppercase py-3 font-bold block hover:text-blue-600"
                   >
-                    <i class="fas fa-fingerprint text-gray-400 mr-2 text-sm"></i>
+                    <i class="fas fa-fingerprint mr-2 text-sm opacity-75"></i>
                     View Profile
                   </a>
                 </li>
 
                 <li class="items-center">
                   <a
-                    href="../auth/login.html"
-                    class="text-gray-800 hover:text-gray-600 text-xs uppercase py-3 font-bold block"
+                    href=""
+                    class="text-xs uppercase py-3 font-bold block hover:text-blue-600"
                   >
-                    <i class="fas fa-fingerprint text-gray-400 mr-2 text-sm"></i>
+                    <i class="fas fa-question-circle mr-2 text-sm opacity-75"></i>
                     About
                   </a>
                 </li>

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/styles.css"/>
 
     <title>IT Development Program</title>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
   </head>
   <body>
     <div class="">
@@ -45,7 +46,7 @@
                 <li class="items-center">
                   <a
                     href="user.php"
-                    class="text-xs uppercase py-3 font-bold block text-pink-500 hover:text-pink-600"
+                    class="text-xs uppercase py-3 font-bold block hover:text-blue-600"
                   >
                     <i class="fas fa-tv mr-2 text-sm opacity-75"></i>
                     Dashboard
@@ -55,9 +56,9 @@
                 <li class="items-center">
                   <a
                     href="user_event.php"
-                    class="text-xs uppercase py-3 font-bold block text-gray-800 hover:text-gray-600"
+                    class="text-xs uppercase py-3 font-bold block hover:text-blue-600"
                   >
-                    <i class="fas fa-tools mr-2 text-sm text-gray-400"></i>
+                    <i class="fas fa-tools mr-2 text-sm opacity-75"></i>
                     Events
                   </a>
                 </li>
@@ -73,20 +74,20 @@
               >
                 <li class="items-center">
                   <a
-                    href="../auth/login.html"
-                    class="text-gray-800 hover:text-gray-600 text-xs uppercase py-3 font-bold block"
+                    href=""
+                    class="text-xs uppercase py-3 font-bold block hover:text-blue-600"
                   >
-                    <i class="fas fa-fingerprint text-gray-400 mr-2 text-sm"></i>
+                    <i class="fas fa-fingerprint mr-2 text-sm opacity-75"></i>
                     View Profile
                   </a>
                 </li>
 
                 <li class="items-center">
                   <a
-                    href="../auth/login.html"
-                    class="text-gray-800 hover:text-gray-600 text-xs uppercase py-3 font-bold block"
+                    href=""
+                    class="text-xs uppercase py-3 font-bold block hover:text-blue-600"
                   >
-                    <i class="fas fa-fingerprint text-gray-400 mr-2 text-sm"></i>
+                    <i class="fas fa-question-circle mr-2 text-sm opacity-75"></i>
                     About
                   </a>
                 </li>
