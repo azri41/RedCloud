@@ -1,4 +1,6 @@
 <?php
+  session_start();
+  include "db-handler.php";
   require "header_admin.php";
 ?>
 
@@ -203,109 +205,62 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
-                          Azri Azmi
-                        </th>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          18
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          12
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          <i class="fas fa-star text-yellow-400 mr-4"></i>
-                          60%
-                        </td>
-                      </tr>
-                      <tr>
-                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
-                          Ariff Rahimin
-                        </th>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          3,985
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          319
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          <i class="fas fa-arrow-down text-orange-500 mr-4"></i>
-                          46,53%
-                        </td>
-                      </tr>
-                      <tr>
-                        <th
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"
-                        >
-                          Naim Syahmi
-                        </th>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          3,513
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          294
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          <i class="fas fa-arrow-down text-orange-500 mr-4"></i>
-                          36,49%
-                        </td>
-                      </tr>
-                      <tr>
-                        <th
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"
-                        >
-                          Haziq Izzuddin
-                        </th>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          2,050
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          147
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          <i class="fas fa-arrow-up text-green-500 mr-4"></i>
-                          50,87%
-                        </td>
-                      </tr>
-                      <tr>
-                        <th
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"
-                        >
-                          Jamal Badil
-                        </th>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          1,795
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          190
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          <i class="fas fa-arrow-down text-red-500 mr-4"></i>
-                          46,53%
-                        </td>
-                      </tr>
+                      <?php
+                        $userType = 'Participant';
+                        $query = "SELECT * from user WHERE userType=?";
+                        $stmt = mysqli_stmt_init($conn);
+                        mysqli_stmt_prepare($stmt, $query);
+                        mysqli_stmt_bind_param($stmt, "s", $userType);
+                        mysqli_stmt_execute($stmt);
+                        $result = mysqli_stmt_get_result($stmt);
+
+                        while($row = mysqli_fetch_array($result)) {
+                          $enrolment = 'Enrolled';
+                          $status = 'Attended';
+                          $queryEventAttended = "SELECT count(email) AS events_attended FROM eventuser WHERE email=? AND enrolment=? AND status=?";
+                          $stmtEventAttended = mysqli_stmt_init($conn);
+                          mysqli_stmt_prepare($stmtEventAttended, $queryEventAttended);
+                          mysqli_stmt_bind_param($stmtEventAttended, "sss", $row['email'], $enrolment, $status);
+                          mysqli_stmt_execute($stmtEventAttended);
+                          $resultEventAttended = mysqli_stmt_get_result($stmtEventAttended);
+                          $rowEventAttended = mysqli_fetch_array($resultEventAttended);
+                          
+                          $statusUnattended = 'Unattended';
+                          $queryEventUnattended = "SELECT count(email) as events_unattended FROM eventuser WHERE email=? AND status=?";
+                          $stmtEventUnattended = mysqli_stmt_init($conn);
+                          mysqli_stmt_prepare($stmtEventUnattended, $queryEventUnattended);
+                          mysqli_stmt_bind_param($stmtEventUnattended, "ss", $row['email'], $statusUnattended);
+                          mysqli_stmt_execute($stmtEventUnattended);
+                          $resultEventUnattended = mysqli_stmt_get_result($stmtEventUnattended);
+                          $rowEventUnattended = mysqli_fetch_array($resultEventUnattended);
+                          
+                          $queryUserProgress = "SELECT totalProgress FROM user WHERE email=?";
+                          $stmtUserProgress = mysqli_stmt_init($conn);
+                          mysqli_stmt_prepare($stmtUserProgress, $queryUserProgress);
+                          mysqli_stmt_bind_param($stmtUserProgress, "s", $row['email']);
+                          mysqli_stmt_execute($stmtUserProgress);
+                          $resultUserProgress = mysqli_stmt_get_result($stmtUserProgress);
+                          $rowUserProgress = mysqli_fetch_array($resultUserProgress);
+
+                          echo '
+                          <tr>
+                          <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
+                            '.$row['name'].'
+                          </th>
+                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                            '.$rowEventAttended['events_attended'].'
+                          </td>
+                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                            '.$rowEventUnattended['events_unattended'].'
+                          </td>
+                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                            <i class="fas fa-star text-yellow-400 mr-4"></i>
+                            '.$rowUserProgress['totalProgress'].'%
+                          </td>
+                        </tr>
+                          ';
+                        }
+                      ?>
                     </tbody>
                   </table>
                 </div>
