@@ -1,5 +1,7 @@
 <?php
-  require "header_admin.php";
+  session_start();
+  include "db-handler.php";
+  require "header_user.php";
 ?>
 
 <html>
@@ -8,17 +10,17 @@
       <div class="relative md:ml-64 bg-gray-100">
         <nav class="absolute top-0 left-0 w-full z-10 bg-transparent md:flex-row md:flex-no-wrap md:justify-start flex items-center p-4">
           <div class="w-full mx-auto items-center flex justify-between md:flex-no-wrap flex-wrap md:px-10 px-4">
-            <a class="text-white text-sm uppercase hidden lg:inline-block font-semibold" href="/admin">Admin Dashboard</a>
+            <a class="text-white text-sm uppercase hidden lg:inline-block font-semibold" href="/">User Dashboard</a>
             <ul class="flex-col md:flex-row list-none items-center hidden md:flex">
               <a class="text-gray-600 block" href="" onclick="openDropdown(event,'user-dropdown')"> <!--profile picture-->
                 <div class="items-center flex">
                   <span class="w-12 h-12 text-sm text-white bg-gray-300 inline-flex items-center justify-center rounded-full">
-                    <img src="img/Dell.jpg" alt="profile_pic" class="w-full rounded-full align-middle border-none shadow-lg"></span>
+                    <img src="img/Dell_Black.jpg" alt="profile_pic" class="w-full rounded-full align-middle border-none shadow-lg"></span>
                 </div>
               </a> <!--end profile pic-->
               <!--drop down menu in profile pic-->
               <div class="hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48" id="user-dropdown">
-                <a href="" class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800">Admin</a>
+                <a href="" class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800">Participant</a>
                 <div class="h-0 my-2 border border-solid border-gray-200"></div>
                 <a href="" class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800">View Profile</a>
               </div>
@@ -32,127 +34,42 @@
             <div>
               <!-- Card stats -->
               <div class="flex flex-wrap">
-                <div class="w-full lg:w-6/12 xl:w-3/12 px-4"> <!--Event card-->
+                <div class="w-full lg:w-6/12 xl:w-4/12 px-4"> <!--social card-->
                   <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
-                    <div class="flex-auto p-4">
-                      <div class="flex flex-wrap">
-                        <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                          <h5 class="text-gray-500 uppercase font-bold text-xs"> 
-                            Events
-                          </h5>
-                          <span class="font-semibold text-xl text-gray-800">
-                            30
-                          </span>
-                        </div>
-                        <div class="relative w-auto pl-4 flex-initial">
-                          <div
-                            class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-red-500"
-                          >
-                            <i class="fas fa-bullhorn"></i>
-                          </div>
-                        </div>
-                      </div>
-                      <p class="text-sm text-gray-500 mt-4">
-                        <span class="text-green-500 mr-2">
-                          <i class="fas fa-arrow-up"></i> 50.48%
-                        </span>
+                    <div class="flex-auto p-4" style="background-image: url('img/social.jpg');">
+                      <p class="text-sm text-white mt-4">
                         <span class="whitespace-no-wrap">
-                          Since last month
+                          Featured Social Event
                         </span>
                       </p>
                     </div>
                   </div>
-                </div> <!--event card-->
+                </div> <!--end social card-->
                 
-                <div class="w-full lg:w-6/12 xl:w-3/12 px-4"> <!--new participants-->
+                <div class="w-full lg:w-6/12 xl:w-4/12 px-4"> <!--training card-->
                   <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
-                    <div class="flex-auto p-4">
-                      <div class="flex flex-wrap">
-                        <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                          <h5 class="text-gray-500 uppercase font-bold text-xs">
-                            New participants
-                          </h5>
-                          <span class="font-semibold text-xl text-gray-800">
-                            2,356
-                          </span>
-                        </div>
-                        <div class="relative w-auto pl-4 flex-initial">
-                          <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-orange-500">
-                            <i class="fas fa-user-friends"></i>
-                          </div>
-                        </div>
-                      </div>
-                      <p class="text-sm text-gray-500 mt-4">
-                        <span class="text-red-500 mr-2">
-                          <i class="fas fa-arrow-down"></i> 10.25%
-                        </span>
+                    <div class="flex-auto p-4" style="background-image: url('img/training.jpg');">
+                      <p class="text-sm text-white mt-4">
                         <span class="whitespace-no-wrap">
-                          Since last week
+                          Featured Training Event
                         </span>
                       </p>
                     </div>
                   </div>
-                </div> <!--end participant-->
+                </div> <!--end training card-->
 
-                <div class="w-full lg:w-6/12 xl:w-3/12 px-4"> <!--enrolled participant-->
+                <div class="w-full lg:w-6/12 xl:w-4/12 px-4"> <!--Volunteer card-->
                   <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
-                    <div class="flex-auto p-4">
-                      <div class="flex flex-wrap">
-                        <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                          <h5 class="text-gray-500 uppercase font-bold text-xs">
-                            Enrolled Participants
-                          </h5>
-                          <span class="font-semibold text-xl text-gray-800">
-                            924
-                          </span>
-                        </div>
-                        <div class="relative w-auto pl-4 flex-initial">
-                          <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-pink-500">
-                            <i class="fas fa-users"></i>
-                          </div>
-                        </div>
-                      </div>
-                      <p class="text-sm text-gray-500 mt-4">
-                        <span class="text-orange-500 mr-2">
-                          <i class="fas fa-arrow-down"></i> 1.10%
-                        </span>
+                    <div class="flex-auto p-4" style="background-image: url('img/volunteer.jpeg');">
+                      <p class="text-sm text-white mt-4">
                         <span class="whitespace-no-wrap">
-                          Since yesterday
+                          Featured Volunteer Event
                         </span>
                       </p>
                     </div>
                   </div>
-                </div> <!--end enrolled participants-->
+                </div> <!--end Volunteer card-->
 
-                <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
-                  <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
-                    <div class="flex-auto p-4">
-                      <div class="flex flex-wrap">
-                        <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                          <h5 class="text-gray-500 uppercase font-bold text-xs">
-                            Performance
-                          </h5>
-                          <span class="font-semibold text-xl text-gray-800">
-                            49,65%
-                          </span>
-                        </div>
-                        <div class="relative w-auto pl-4 flex-initial">
-                          <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-blue-500">
-                            <i class="fas fa-percent"></i>
-                          </div>
-                        </div>
-                      </div>
-                      <p class="text-sm text-gray-500 mt-4">
-                        <span class="text-green-500 mr-2">
-                          <i class="fas fa-arrow-up"></i> 12%
-                        </span>
-                        <span class="whitespace-no-wrap">
-                          Since last month
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -173,7 +90,7 @@
                         Overview
                       </h6>
                       <h2 class="text-white text-xl font-semibold">
-                        Number of Participants
+                        Progress
                       </h2>
                     </div>
                   </div>
@@ -187,14 +104,14 @@
               </div>
             </div>
 
-          <div class="flex flex-wrap mt-4"> <!--Participants-->
-            <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
+          <div class="relative w-full max-w-full flex-grow flex-1"> <!--Participants-->
+            <div class="w-full mb-12 xl:mb-0 px-4">
               <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
                 <div class="rounded-t mb-0 px-4 py-3 border-0">
                   <div class="flex flex-wrap items-center">
                     <div class="relative w-full px-4 max-w-full flex-grow flex-1">
                       <h3 class="font-semibold text-base text-gray-800">
-                        Participants
+                        Available Events
                       </h3>
                     </div>
                     <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
@@ -214,133 +131,93 @@
                       <tr>
                         <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 
                         border-r-0 whitespace-no-wrap font-semibold text-left">
-                          Name
+                          Events
                         </th>
                         <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 
                         border-r-0 whitespace-no-wrap font-semibold text-left">
-                          Attended Event
+                          Start Date
                         </th>
                         <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 
                         border-r-0 whitespace-no-wrap font-semibold text-left">
-                          Unattended Event
+                          End Date
                         </th>
                         <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 
                         border-r-0 whitespace-no-wrap font-semibold text-left">
-                          Progress
+                          Status
+                        </th>
+                        <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 
+                        border-r-0 whitespace-no-wrap font-semibold text-left">
+                          Action
                         </th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
-                          Azri Azmi
-                        </th>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          18
+                      <?php
+                        $userType = 'Participant';
+                        $query = "SELECT * from user WHERE userType=?";
+                        $stmt = mysqli_stmt_init($conn);
+                        mysqli_stmt_prepare($stmt, $query);
+                        mysqli_stmt_bind_param($stmt, "s", $userType);
+                        mysqli_stmt_execute($stmt);
+                        $result = mysqli_stmt_get_result($stmt);
+
+                        while($row = mysqli_fetch_array($result)) {
+                          $enrolment = 'Enrolled';
+                          $status = 'Attended';
+                          $queryEventAttended = "SELECT count(email) AS events_attended FROM eventuser WHERE email=? AND enrolment=? AND status=?";
+                          $stmtEventAttended = mysqli_stmt_init($conn);
+                          mysqli_stmt_prepare($stmtEventAttended, $queryEventAttended);
+                          mysqli_stmt_bind_param($stmtEventAttended, "sss", $row['email'], $enrolment, $status);
+                          mysqli_stmt_execute($stmtEventAttended);
+                          $resultEventAttended = mysqli_stmt_get_result($stmtEventAttended);
+                          $rowEventAttended = mysqli_fetch_array($resultEventAttended);
+                          
+                          $statusUnattended = 'Unattended';
+                          $queryEventUnattended = "SELECT count(email) as events_unattended FROM eventuser WHERE email=? AND status=?";
+                          $stmtEventUnattended = mysqli_stmt_init($conn);
+                          mysqli_stmt_prepare($stmtEventUnattended, $queryEventUnattended);
+                          mysqli_stmt_bind_param($stmtEventUnattended, "ss", $row['email'], $statusUnattended);
+                          mysqli_stmt_execute($stmtEventUnattended);
+                          $resultEventUnattended = mysqli_stmt_get_result($stmtEventUnattended);
+                          $rowEventUnattended = mysqli_fetch_array($resultEventUnattended);
+                          
+                          $queryUserProgress = "SELECT totalProgress FROM user WHERE email=?";
+                          $stmtUserProgress = mysqli_stmt_init($conn);
+                          mysqli_stmt_prepare($stmtUserProgress, $queryUserProgress);
+                          mysqli_stmt_bind_param($stmtUserProgress, "s", $row['email']);
+                          mysqli_stmt_execute($stmtUserProgress);
+                          $resultUserProgress = mysqli_stmt_get_result($stmtUserProgress);
+                          $rowUserProgress = mysqli_fetch_array($resultUserProgress);
+
+                          echo '
+                          <tr>
+                          <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
+                            '.$row['name'].'
+                          </th>
+                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                            '.$rowEventAttended['events_attended'].'
+                          </td>
+                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                            '.$rowEventUnattended['events_unattended'].'
+                          </td>
+                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                            <i class="fas fa-star text-yellow-400 mr-4"></i>
+                            '.$rowUserProgress['totalProgress'].'%
+                          </td>
+                          <td class="px-4 py-3 text-sm text-green-500 font-semibold">
+                          <a href="" class="btn">Enroll</a>
                         </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          12
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          <i class="fas fa-star text-yellow-400 mr-4"></i>
-                          60%
-                        </td>
-                      </tr>
-                      <tr>
-                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
-                          Ariff Rahimin
-                        </th>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          3,985
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          319
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          <i class="fas fa-arrow-down text-orange-500 mr-4"></i>
-                          46,53%
-                        </td>
-                      </tr>
-                      <tr>
-                        <th
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"
-                        >
-                          Naim Syahmi
-                        </th>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          3,513
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          294
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          <i class="fas fa-arrow-down text-orange-500 mr-4"></i>
-                          36,49%
-                        </td>
-                      </tr>
-                      <tr>
-                        <th
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"
-                        >
-                          Haziq Izzuddin
-                        </th>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          2,050
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          147
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          <i class="fas fa-arrow-up text-green-500 mr-4"></i>
-                          50,87%
-                        </td>
-                      </tr>
-                      <tr>
-                        <th
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"
-                        >
-                          Jamal Badil
-                        </th>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          1,795
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          190
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          <i class="fas fa-arrow-down text-red-500 mr-4"></i>
-                          46,53%
-                        </td>
-                      </tr>
+                        </tr>
+                          ';
+                        }
+                      ?>
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
 
-            <div class="w-full xl:w-6/12 px-4">
+            <div class="relative w-full max-w-full flex-grow flex-1">
               <div
                 class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded"
               >
@@ -350,7 +227,7 @@
                       class="relative w-full px-4 max-w-full flex-grow flex-1"
                     >
                       <h3 class="font-semibold text-base text-gray-800">
-                        Events Status
+                        Enrolled Events
                       </h3>
                     </div>
                     <div
@@ -380,161 +257,93 @@
                         <th
                           class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left"
                         >
-                          Date
+                          Date Start
+                        </th>
+                        
+                        <th
+                          class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left"
+                        >
+                          Date End
                         </th>
                         <th
                           class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left min-w-140-px"
                         >
                           Status
                         </th>
+                        <th
+                          class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left min-w-140-px"
+                        >
+                          Action
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+                    <?php
+                        $queryEvents = "SELECT eventName, DATE(eventStart) as dateStart, DATE(eventEnd) as dateEnd, eventType, status FROM event";
+                        $resultEvents = mysqli_query($conn, $queryEvents);
+                        while($rowEvents = mysqli_fetch_array($resultEvents)) {
+                        echo '
+                        <tr>
                         <th
                           class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"
                         >
-                          Facebook
+                          '.$rowEvents['eventName'].'
                         </th>
                         <td
                           class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
                         >
-                          1,480
+                          '.$rowEvents['dateStart'].'
                         </td>
                         <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          <div class="flex items-center">
-                            <span class="mr-2">60%</span>
-                            <div class="relative w-full">
-                              <div
-                                class="overflow-hidden h-2 text-xs flex rounded bg-red-200"
-                              >
-                                <div
-                                  style="width: 60%;"
-                                  class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
-                                ></div>
-                              </div>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"
-                        >
-                          Facebook
-                        </th>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          5,480
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          <div class="flex items-center">
-                            <span class="mr-2">70%</span>
-                            <div class="relative w-full">
-                              <div
-                                class="overflow-hidden h-2 text-xs flex rounded bg-green-200"
-                              >
-                                <div
-                                  style="width: 70%;"
-                                  class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"
-                                ></div>
-                              </div>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"
-                        >
-                          Google
-                        </th>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          4,807
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          <div class="flex items-center">
-                            <span class="mr-2">80%</span>
-                            <div class="relative w-full">
-                              <div
-                                class="overflow-hidden h-2 text-xs flex rounded bg-purple-200"
-                              >
-                                <div
-                                  style="width: 80%;"
-                                  class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-500"
-                                ></div>
-                              </div>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"
-                        >
-                          Instagram
-                        </th>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          3,678
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          <div class="flex items-center">
-                            <span class="mr-2">75%</span>
-                            <div class="relative w-full">
-                              <div
-                                class="overflow-hidden h-2 text-xs flex rounded bg-blue-200"
-                              >
-                                <div
-                                  style="width: 75%;"
-                                  class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"
-                                ></div>
-                              </div>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"
-                        >
-                          twitter
-                        </th>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          2,645
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                        >
-                          <div class="flex items-center">
-                            <span class="mr-2">30%</span>
-                            <div class="relative w-full">
-                              <div
-                                class="overflow-hidden h-2 text-xs flex rounded bg-orange-200"
-                              >
-                                <div
-                                  style="width: 30%;"
-                                  class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"
-                                ></div>
-                              </div>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
+                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
+                      >
+                        '.$rowEvents['dateEnd'].'
+                      </td>
+                      <td
+                      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
+                    >
+                      <div class="flex items-center">';
+                      if ($rowEvents['status']=='Ongoing') {
+                        echo '<span
+                        class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
+                      >
+                      '.$rowEvents['status'].'
+                      </span>
+  
+                        </div>
+                      </td>
+                      <td class="px-4 py-3 text-sm text-green-500 font-semibold">
+                      <a href="" class="btn">Attend</a>
+                    </td>
+                        </tr>
+                          ';
+                      }
+                      else if($rowEvents['status']=='Upcoming') {
+                        echo '<span
+                        class="px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full dark:bg-orange-700 dark:text-orange-100"
+                      >
+                      '.$rowEvents['status'].'
+                      </span>
+  
+                        </div>
+                      </td>
+                        </tr>
+                          ';
+                      }
+                      else if($rowEvents['status']=='Finished') {
+                        echo '<span
+                        class="px-2 py-1 font-semibold leading-tight text-gray-700 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-100"
+                      >
+                      '.$rowEvents['status'].'
+                      </span>
+  
+                        </div>
+                      </td>
+
+                        </tr>
+                          ';
+                      }}
+                      ?>
                     </tbody>
                   </table>
                 </div>

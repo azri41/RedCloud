@@ -30,40 +30,7 @@
             >
               IT Development Program
             </a>
-            <ul class="md:hidden items-center flex flex-wrap list-none">
-              <li class="inline-block relative">
-                <a
-                  class="text-gray-600 block py-1 px-3"
-                  href=""
-                  onclick="openDropdown(event,'notification-dropdown')"
-                  ><i class="fas fa-bell"></i
-                ></a>
-                <div
-                  class="hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
-                  id="notification-dropdown"
-                >
-                  <a
-                    href=""
-                    class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800"
-                    >Action</a
-                  ><a
-                    href=""
-                    class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800"
-                    >Another action</a
-                  ><a
-                    href=""
-                    class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800"
-                    >Something else here</a
-                  >
-                  <div class="h-0 my-2 border border-solid border-gray-200"></div>
-                  <a
-                    href=""
-                    class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800"
-                    >Seprated link</a
-                  >
-                </div>
-              </li>
-            </ul>
+
             <div
               class="md:flex md:flex-col md:items-stretch md:opacity-100 md:relative md:mt-4 md:shadow-none shadow absolute top-0 left-0 right-0 z-40 overflow-y-auto overflow-x-hidden h-auto items-center flex-1 rounded hidden"
               id="example-collapse-sidebar"
